@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def countNa(df):
-		'''Do barplot of missing values / NaN
+	'''Do barplot of missing values / NaN
 
 		Parameters:
 		-----------
