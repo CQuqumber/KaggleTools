@@ -16,5 +16,7 @@ def convertType(df):
 	for x, dtype in zip(df.columns, df.dtypes):
 		if dtype == np.float64:
 			df[c] = df[c].astype(np.float32)
+		elif dtype == np.int64:
+			df[c] = df[c].astype(np.int32)
 
 	return df
