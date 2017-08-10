@@ -4,6 +4,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def countNa(df):
+		'''Do barplot of missing values / NaN
+
+		Parameters:
+		-----------
+		values: Pandas Data Frame
+
+		Return: Pandas Data Frame
+		-----------
+
+	'''
 	null_value = df.isnull().sum().reset_index()
 	null_value.columns = ['feature','countNA']
 	null_value = null_value.sort_values('countNA', ascending = False)
