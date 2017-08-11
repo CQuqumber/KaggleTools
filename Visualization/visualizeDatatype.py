@@ -1,5 +1,5 @@
 def dataType(df):
-''' LightGBm Feature Importance by bar plot
+''' DataType visualization by bar plot
 
 		Parameters:
 		-----------
