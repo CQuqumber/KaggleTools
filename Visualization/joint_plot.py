@@ -2,17 +2,17 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-def jointplot(df, uplimit=99.5, lolimit=0.5, xvar, yvar, xlabel, ylabel, mask = True, color_num = 4):
+def jointplot(train_df, uplimit, lolimit, xvar, yvar, xlabel, ylabel, mask, color_num):
 	'''Join Plot for 
 
 		Parameters:
 		-----------
 		df: DataFrame
 
-		uplimit: float, default = 99.5
+		uplimit: float
 			Percentile upper bound
 
-		lolimit: float, default = 0.5
+		lolimit: float
 			Percentile lower bound
 
 		xvar: str
@@ -27,7 +27,7 @@ def jointplot(df, uplimit=99.5, lolimit=0.5, xvar, yvar, xlabel, ylabel, mask = 
 		ylabel: str
 			ylabel name
 
-		mask: boolean, default = True
+		mask: boolean
 			Boolean mask for replacement,
 			True: exclude
 			False: replace
