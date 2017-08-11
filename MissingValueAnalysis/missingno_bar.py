@@ -5,7 +5,7 @@ def missing_bar(df):
 		-----------
 		df: DataFrame
 
-		Return: sns barplot
+		Return:  barplot
 		-----------
 	'''
 	missingValueColumns = df.columns[df.isnull().any()].tolist()
