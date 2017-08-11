@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-def jointplot(train_df, uplimit, lolimit, xvar, yvar, xlabel, ylabel, mask, color_num):
+def jointplot(train_df, uplimit, lolimit, xvar, yvar, xlabel, ylabel, mask):
 	'''Join Plot for 
 
 		Parameters:
@@ -42,7 +42,6 @@ def jointplot(train_df, uplimit, lolimit, xvar, yvar, xlabel, ylabel, mask, colo
 		Return: HeatMap
 		-----------
 	'''
-    color = sns.color_palette()
     median_values = train_df.median(axis=0)
     train_df = train_df.fillna(median_values, inplace=True)
     ulimit = np.percentile(train_df[xvar].values, uplimit)
@@ -55,7 +54,7 @@ def jointplot(train_df, uplimit, lolimit, xvar, yvar, xlabel, ylabel, mask, colo
     	train_df[xvar].ix[train_df[xvar]<llimit] = llimit
 
     plt.figure(figsize=(12,12))
-    sns.jointplot(x=train_df[xvar].values, y=train_df[yvar].values, size=10, color=color[color_num])
+    sns.jointplot(x=train_df[xvar].values, y=train_df[yvar].values, size=10, kind='hex',color="#34495e")
     plt.ylabel(ylabel, fontsize=12)
     plt.xlabel(xlabel, fontsize=12)
     #plt.title("Finished square feet 12 Vs Log error", fontsize=15)
