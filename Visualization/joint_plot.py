@@ -42,19 +42,21 @@ def jointplot(train_df, uplimit, lolimit, xvar, yvar, xlabel, ylabel, mask, colo
 		Return: HeatMap
 		-----------
 	'''
-	color = sns.color_palette()
-	ulimit = np.percentile(train_df[col].values, uplimit)
-	llimit = np.percentile(train_df[col].values, lolimit)
-	if mask == True:
-		train_df = train_df[col].ix[train_df[col]<ulimit]
-		train_df = train_df[col].ix[train_df[col]>llimit]
-	else:
-		train_df[col].ix[train_df[col]>ulimit] = ulimit
-		train_df[col].ix[train_df[col]<llimit] = llimit
+    color = sns.color_palette()
+    median_values = train_df.median(axis=0)
+    train_df = train_df.fillna(median_values, inplace=True)
+    ulimit = np.percentile(train_df[xvar].values, uplimit)
+    llimit = np.percentile(train_df[xvar].values, lolimit)
+    if mask == True:
+        train_df[xvar] = train_df[xvar].ix[train_df[xvar]<ulimit]
+        train_df[xvar] = train_df[xvar].ix[train_df[xvar]>llimit]
+    else:
+        train_df[xvar].ix[train_df[xvar]>ulimit] = ulimit
+    	train_df[xvar].ix[train_df[xvar]<llimit] = llimit
 
-	plt.figure(figsize=(12,12))
-	sns.jointplot(x=train_df[xvar].values, y=train_df[yvar].values, size=10, color=color[color_num])
-	plt.ylabel(ylabel, fontsize=12)
-	plt.xlabel(xlabel, fontsize=12)
-	#plt.title("Finished square feet 12 Vs Log error", fontsize=15)
-	plt.show()	
+    plt.figure(figsize=(12,12))
+    sns.jointplot(x=train_df[xvar].values, y=train_df[yvar].values, size=10, color=color[color_num])
+    plt.ylabel(ylabel, fontsize=12)
+    plt.xlabel(xlabel, fontsize=12)
+    #plt.title("Finished square feet 12 Vs Log error", fontsize=15)
+    plt.show()
