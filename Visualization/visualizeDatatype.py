@@ -8,15 +8,6 @@ def dataType(df):
 		Return: sns barplot
 		-----------
 
-	===========Define the evaluate function by youself================
-	==================================================================
-
-	def lgb_rmsle_score(preds, dtrain):
-    	labels = dtrain.get_label()
-    return 'RMSLE', rmsle(10**labels, 10**preds)
-
-	==================================================================
-	==================================================================
 	'''
 	import seaborn as sns
 	import matplotlib.pyplot as plt
