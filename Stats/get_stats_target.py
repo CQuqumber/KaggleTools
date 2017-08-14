@@ -1,5 +1,6 @@
 def get_stats(df, group_col, target_col, drop_raw_col=False):
-'''
+'''  merge basic stats columns
+
 	Parameters:
 	-----------
 		df: DataFrame
