@@ -13,7 +13,7 @@ def convertType(df):
 		Return: Data Frame
 		-----------
 	'''
-	for x, dtype in zip(df.columns, df.dtypes):
+	for c, dtype in zip(df.columns, df.dtypes):
 		if dtype == np.float64:
 			df[c] = df[c].astype(np.float32)
 		elif dtype == np.int64:
